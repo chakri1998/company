@@ -1,6 +1,7 @@
+ def project_path="company"
 pipeline{
   agent any
-   def project_path="company"
+  
   stages {
     stage('Cloning Git') {
       steps {
