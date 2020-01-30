@@ -1,27 +1,21 @@
  def project_path="company"
+ dir("project_path") {
 pipeline{
-
   agent any
-  
-  stages {
-  
+  stages {  
     stage('Cloning Git') {
       steps {
           script {
                     FAILED_STAGE=env.STAGE_NAME
                     echo "Cloning Git"
                 }
-        git branch:'master', url:'https://github.com/chakri1998/fulldemo.git'
-        
-      }
-      
+        git branch:'master', url:'https://github.com/chakri1998/fulldemo.git'        
+      }      
     }
- dir("project_path") {
-         stage('Clean Old Packages') {
-             
+ 
+         stage('Clean Old Packages') {             
              steps{
-                 script {
-                    
+                 script {                    
                     echo "Clean Old Packages"
                 }
                           
