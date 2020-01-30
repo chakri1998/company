@@ -5,12 +5,12 @@ pipeline{
     stage('Cloning Git') {
       steps {
           script {
-                    FAILED_STAGE=env.STAGE_NAME
-                    echo "Cloning Git"
+                 echo "Cloning Git"
                 }
         git branch:'master', url:'https://github.com/chakri1998/fulldemo.git'        
       }      
     }
+    script{
   dir("${env.project_path}")
   {
          stage('Clean Old Packages') {             
@@ -55,7 +55,7 @@ pipeline{
    archiveArtifacts 'target/*.war'
    }
   }
- 
+ }
 }
 }
 }
