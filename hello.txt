@@ -15,7 +15,7 @@ pipeline{
              steps{
              
                  script { 
-                  dir("company/")
+                  dir("/company")
   {
                     echo "Clean Old Packages"
                 }
@@ -28,7 +28,7 @@ pipeline{
         stage('Maven Compile') {
         steps{
             script {
-                    dir("company/")
+                    dir("/company")
   {
                     echo "Maven Compile"
                 }
@@ -42,7 +42,7 @@ pipeline{
     stage('Maven install') {
     steps{
         script {
-                    dir("company/")
+                    dir("/company")
   {  
                     echo "Maven Package"
                 }
