@@ -16,7 +16,7 @@ pipeline{
              steps{
              
                  script { 
-                  dir("${env.project_path}")
+                  dir("${project_path}")
   {
                     echo "Clean Old Packages"
                 }
@@ -29,7 +29,7 @@ pipeline{
         stage('Maven Compile') {
         steps{
             script {
-                    dir("${env.project_path}")
+                    dir("${project_path}")
   {
                     echo "Maven Compile"
                 }
@@ -43,7 +43,7 @@ pipeline{
     stage('Maven install') {
     steps{
         script {
-                   dir("${env.project_path}")
+                   dir("${project_path}")
   {  
                     echo "Maven Package"
                 }
