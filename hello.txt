@@ -1,9 +1,10 @@
  def project_path="company"
 pipeline{
-dir(project_path) {
+
   agent any
   
   stages {
+  
     stage('Cloning Git') {
       steps {
           script {
@@ -15,7 +16,7 @@ dir(project_path) {
       }
       
     }
- 
+ dir("project_path") {
          stage('Clean Old Packages') {
              
              steps{
