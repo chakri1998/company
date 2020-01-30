@@ -15,26 +15,28 @@ pipeline{
              steps{
              
                  script { 
-                  dir("Pipeline company_projectPipeline company_project/company")
+                  dir("company")
   {
                     echo "Clean Old Packages"
-                }
+                
                           
         sh label: 'Clean', script: 'mvn clean'
         
-    }
-             }
+    }    
+          }
+          }
          }
         stage('Maven Compile') {
         steps{
             script {
-                    dir("Pipeline company_project/company")
+                    dir("company")
   {
                     echo "Maven Compile"
-                }
+                
          
         sh label: 'Compile', script: 'mvn compile'
         
+    }
     }
         }
         }
@@ -42,14 +44,14 @@ pipeline{
     stage('Maven install') {
     steps{
         script {
-                    dir("Pipeline company_project/company")
+                    dir("company")
   {  
                     echo "Maven Package"
-                }
+                
      
     sh label: 'INSTALL', script: 'mvn install'
     
-    
+    }
     }
     }
  }
