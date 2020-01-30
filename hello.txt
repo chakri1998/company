@@ -1,5 +1,4 @@
  def project_path="company"
- dir("project_path") {
 pipeline{
   agent any
   stages {  
@@ -12,7 +11,8 @@ pipeline{
         git branch:'master', url:'https://github.com/chakri1998/fulldemo.git'        
       }      
     }
- 
+  script{
+  dir("project_path") {
          stage('Clean Old Packages') {             
              steps{
                  script {                    
@@ -55,7 +55,7 @@ pipeline{
    archiveArtifacts 'target/*.war'
    }
   }
-  
+ }
 }
 }
 }
