@@ -1,10 +1,6 @@
 
 def FAILED_STAGE
 pipeline{
-    environment {
-    registry = "chakri1998/fulldemo"
-    registryCredential = 'dockerhub'
-  }
   agent any
   stages {
     stage('Cloning Git') {
