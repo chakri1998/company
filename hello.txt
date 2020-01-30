@@ -1,7 +1,6 @@
-
-def FAILED_STAGE
 pipeline{
   agent any
+   def project_path="company"
   stages {
     stage('Cloning Git') {
       steps {
@@ -14,14 +13,12 @@ pipeline{
       }
       
     }
-    def project_path="company"
- 
  dir(project_path) {
          stage('Clean Old Packages') {
              
              steps{
                  script {
-                    FAILED_STAGE=env.STAGE_NAME
+                    
                     echo "Clean Old Packages"
                 }
                           
@@ -33,7 +30,7 @@ pipeline{
         stage('Maven Compile') {
         steps{
             script {
-                    FAILED_STAGE=env.STAGE_NAME
+                   
                     echo "Maven Compile"
                 }
          
@@ -46,16 +43,22 @@ pipeline{
     stage('Maven install') {
     steps{
         script {
-                    FAILED_STAGE=env.STAGE_NAME
+                    
                     echo "Maven Package"
                 }
      
-    sh label: 'Testing', script: 'mvn install'
+    sh label: 'INSTALL', script: 'mvn install'
     
     
     }
     }
  
+ stage('Archive-Artifacts') {
+ steps{
+   archiveArtifacts 'target/*.war'
+   }
+  }
+  
 }
 }
 }
